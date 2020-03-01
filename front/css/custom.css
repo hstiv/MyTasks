@@ -1,0 +1,147 @@
+body {
+	background-color: rgb(225, 225, 225)!important;
+	font-family:"Futura PT", "Futura", Helvetica, "Sans serif"!important;
+	letter-spacing: 0.84px!important;
+	line-height: 21.12px!important;
+}
+
+.container {
+	width: 25%!important;
+}
+
+.header {
+	width: 100%;
+	background-color: #69777a;
+	height: 70px;
+}
+
+.header_form {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	float: right;
+	min-width: 250px;
+}
+
+#login_task {
+	float: left;
+
+}
+
+.task_form {
+	background: rgb(250, 250, 250);
+	min-width: 250px;
+	border: 2px solid #69777a!important;
+	border-radius: 7px;
+	padding: 20px 10px;
+	margin-top: 5px;
+}
+
+.custom_btn-success {
+	margin-top: 5px;
+	color: #00babc!important;
+	background-color: rgb(247, 247, 247)!important;
+	border-color: #00babc!important;
+}
+
+.custom_btn-success:hover {
+	color: rgb(247, 247, 247)!important;
+	background-color: #00babc!important;
+}
+
+#task {
+	width: 100%;
+	float: center;
+	margin-right: 5%;
+	margin-top:2px;
+}
+
+#header_task {
+	width: 20%;
+	float: right;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.login_btn {
+	margin-left: 5px;
+	margin-top:5px;
+	color: rgb(50, 50, 50)!important;
+	background-color: rgb(255, 242, 0)!important;
+}
+
+.login_btn:hover {
+	color: rgb(50, 50, 50)!important;
+	background-color: rgb(218, 208, 24)!important;
+}
+
+.logout_btn {
+	margin-left: 5px;
+	margin-top:5px;
+	color: rgb(50, 50, 50)!important;
+	background-color: rgb(236, 46, 12)!important;
+	border-color: none!important;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logout_btn:hover {
+	color: rgb(50, 50, 50)!important;
+	background-color: rgb(194, 68, 46)!important;
+}
+
+.form_pagination {
+	background: rgb(250, 250, 250);
+	min-width: 500px;
+	border: 2px solid #69777a!important;
+	border-radius: 7px;
+	padding: 20px 10px;
+	margin-top: 5px;
+}
+
+.ul_pagination {
+	padding: 0 10px!important;
+	border: 2px solid rgb(77, 88, 88)!important;
+	border-radius: 5px;
+	min-width: 250px;
+}
+
+.li_pagination {
+	list-style: none;
+	padding: 15px;
+	margin-bottom: 10px;
+	background: #fcfcfc;
+	border: 1px solid silver;
+	border-radius: 5px;
+}
+
+.li_pagination:hover {
+	background: #e5e5e5;
+}
+
+.button_pagination {
+	border: 0;
+	padding: 5px 15px;
+	color: white;
+	font-size: 13px;
+	background: #db5757;
+	position: relative;
+	left: 130px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+.button_pagination:hover {
+	background: #a04141;
+}
+
+.desk {
+	list-style: none;
+	color: lightslategrey!important;
+	font-size: 15px;
+	display: flex;
+}
+
+.desk_email {
+	margin-left: auto;
+}
