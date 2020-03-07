@@ -54,6 +54,7 @@ $content.='<div class="container" style="width: 100%!important; max-width: 400px
 $query = $pdo->query('SELECT COUNT(*) as count FROM `tasks`');
 $res = $query->fetch(PDO::FETCH_OBJ);
 $page_count = $res->count;
+$task_count = $page_count;
 $page_num = 1;
 $notesOnPage = 3;
 $active_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -85,7 +86,7 @@ if ($page >= 0) {
 				'<form class="ul_pagination" action="/modify_task.php" method="post">
 					<li class="desk"><b>Имя: '. "$row->name".'</b></li>
 					<li class="desk"><b>Email: '. "$row->email".'</b></li>
-					<input type="text" name="task" id="task" class="li_pagination" value="'. $row->task.'"'. $readonly.'>';
+					<input type="text" name="task" id="task" class="li_pagination" value="'. $row->task.'">';
 		if ($_SESSION['admin'] == 1) { //shows when admin is logged
 			$content.= '<input type="hidden" name="status_1" value="0">
 					<input type="checkbox" id="status_1" name="status_1" value="1"'. $checked. '/>
@@ -111,8 +112,10 @@ $order_values = array('Имя' => 'name',
 					'Почта' => 'email',
 					'Статус' => 'check');
 
-$content.='	</div>
-			<div class="container">
+$content.='	</div>';
+if ($task_count > 1)
+{
+	$content.=	'<div class="container">
 				<form action="/set_order.php" class="order_form" method="post">';
 foreach($order_values as $rus => $eng) {
 	$content.= '<ul class="container" style="display: flex; flex-direction: column; text-align: center; margin-left: 5px!important; font-size: 0.8rem; padding: 5px; max-width: 110px; border: 1px solid gray; border-radius: 5px; background-color: rgb(225, 225, 225); margin-top: 5px; margin-bottom: 5px">	
@@ -126,8 +129,9 @@ foreach($order_values as $rus => $eng) {
 }
 $content.=	'<button type="submit" name="orderbutton" class="sort_btn">Сортировать</button>
 			</form>
-			</div>
-		</main>
+			</div>';
+}
+$content.='</main>
 	</body>
 </html>';
 
