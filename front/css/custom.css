@@ -139,18 +139,6 @@ body {
 	display: flex;
 }
 
-.desk_email {
-	margin-left: auto;
-}
-
-.red_input {
-	background-color: red;
-}
-
-.green_input {
-	background-color: green;
-}
-
 .sort_btn {
 	font-size: 0.7rem!important;
 	border: 1px solid grey;
@@ -161,7 +149,7 @@ body {
 	margin-bottom: auto;
 	max-width: 80px;
 	max-height: 30px;
-}s
+}
 
 .select_container {
 	border: 1px solid grey;

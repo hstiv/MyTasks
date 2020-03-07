@@ -1,10 +1,15 @@
 <?php
+	session_start();
+
+	if ($_SESSION['admin'] == 0) {
+		header('Location: /');
+		exit();
+	}
 	require 'config.php';
 
 	$check = $_POST['check'];
 	$id = $_POST['id'];
 	$status_1 = intval($_POST['status_1']);
-	$status_2 = $_POST['status_2'];
 
 	if (isset($_POST["delete"]))
 	{
@@ -15,7 +20,7 @@
 	}
 	else if (isset($_POST['modify']))
 	{
-		if (isset($_POST['task']))
+		if (isset($_POST['task']) && $_POST['task'] != $_POST['task_in_sql'])
 		{
 			if ($_POST['task'] == '') {
 				header('Location: /?error=Невозможно создать пустую задачу!');
@@ -24,7 +29,10 @@
 			$task = $_POST['task'];
 			$sql = 'UPDATE `tasks` SET `task`=? WHERE `tasks`.`id`='. $id;
 			$query = $pdo->prepare($sql);
-			$t1 = $query->execute([$task]);
+			$query->execute([$task]);
+			$sql = 'UPDATE `tasks` SET `modified`= 1 WHERE `tasks`.`id`='. $id;
+			$query = $pdo->prepare($sql);
+			$query->execute([]);
 			header('Location: /?success=');
 		}
 		if ($check != $status_1)
@@ -33,12 +41,6 @@
 			$query = $pdo->prepare($sql);
 			$query->execute([$id]);
 			header('Location: /?success=Checkbox!');
-		}
-		if ($status_2 != $modified)
-		{
-			$sql = 'UPDATE `tasks` SET `modified`='. $status_2. ' WHERE `tasks`.`id`='. $id;
-			$query = $pdo->prepare($sql);
-			$query->execute([]);
 		}
 	}
 	header('Location: /');

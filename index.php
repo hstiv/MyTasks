@@ -30,11 +30,18 @@ else
 $content.= '</form>
 		</header>
 		<main>';
-if (isset($_GET['error']))
+if (isset($_GET['error'])) {
 	$content.=
 			'<div class="alert alert-danger" style="text-align: center">
 					<strong>'. $_GET['error'] .'<strong>
 			</div>';
+}
+else if (isset($_GET['add_task_success'])) {
+	$content.=
+			'<div class="alert alert-success" style="text-align: center">
+					<strong>Задача добавлена успешно!<strong>
+			</div>';
+}
 $content.='<div class="container" style="width: 100%!important; max-width: 400px!important; margin-top: 5px">
 			<form class="task_form" action="/add_task.php" method="post">
 				<input type="text" name="name" id="task" placeholder="Ведите имя ползователя..." class="form-control">
@@ -78,19 +85,19 @@ if ($page >= 0) {
 				'<form class="ul_pagination" action="/modify_task.php" method="post">
 					<li class="desk"><b>Имя: '. "$row->name".'</b></li>
 					<li class="desk"><b>Email: '. "$row->email".'</b></li>
-					<input type="text" name="task" id="task" class="li_pagination" value="'. $row->task.'"'. $readonly.'>
-					<input type="hidden" name="status_1" value="0">
-					<input type="checkbox" id="status_1" name="status_1" value="1"'. $checked. $on_click. '/>';
+					<input type="text" name="task" id="task" class="li_pagination" value="'. $row->task.'"'. $readonly.'>';
 		if ($_SESSION['admin'] == 1) { //shows when admin is logged
-			$content.= '<input type="radio" name="status_2" value="0"'. ($row->modified == 0 ? ' checked ' : ''). 'style="margin-left:5px" class="red_input"/>
-					<input type="radio" id="status_2" name="status_2" value="1" '. ($row->modified == 1 ? ' checked ' : '') . 'class="green_input"/>
+			$content.= '<input type="hidden" name="status_1" value="0">
+					<input type="checkbox" id="status_1" name="status_1" value="1"'. $checked. '/>
 					<button type="submit" class="button_pagination" style="background: green" name="modify">Изменить</button>
 					<button type="submit" class="button_pagination" name="delete">Удалить</button>
 					<input type="hidden" name="id" value="'. $row->id. '">
 					<input type="hidden" name="modified" value="'. $row->modified .'">
-					<input type="hidden" name="check" value="'. $row->check. '">';
+					<input type="hidden" name="check" value="'. $row->check. '">
+					<input type="hidden" name="task_in_sql" value="'. $row->task. '">';
 		}
 		$content.= (($row->modified == 1) ? '<label class="desk">Отредактировано администратором</label>' : '').
+					(($row->check == 1) ? '<label class="desk" style="color: green!important;">Выполнено</label>' : '').
 				'</form>';
 	}
 }
@@ -128,5 +135,7 @@ $content.=	'<button type="submit" name="orderbutton" class="sort_btn">Сорти
 if (isset($content))
 	echo $content;
 
-unset($_GET);
-unset($_SESSION);
+unset($_GET['error']);
+unset($_GET['add_task_success']);
+unset($_GET['success']);
+

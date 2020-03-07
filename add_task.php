@@ -29,7 +29,7 @@
 		$sql = 'INSERT INTO tasks(name, email, task) VALUES(:name,:email,:task)';
 		$query = $pdo->prepare($sql);
 		$query->execute(['name' => $name, 'email' => $email, 'task' => $task]);
-		header('Location: /?success=Успешно!');
+		header('Location: /?add_task_success=Успешно!');
 	}
 	else
 		header('Location: /?error=Danger!');
