@@ -1,18 +1,26 @@
 <?php
 
 	require 'config.php';
-	
-	if ($_POST['login'] == "admin" && $_POST['passwd'] == "123")
+	if (isset($_POST['signin']))
 	{
-		$admin = "1";
-		$sql = 'INSERT INTO admin(admin) VALUE(:admin)';
-		$query = $pdo->prepare($sql);
-		$query->execute(['admin' => $admin]);
+		if ($_POST['login'] == "admin" && $_POST['passwd'] == "123")
+		{
+			session_start();
+			$_SESSION["admin"] = 1;
+			header("Location: /?success=Успешно");
+		}
+		else
+		{
+			header("Location: /?error=Не верный логин или пароль");
+			exit();
+		}
+	}
+	else if (isset($_POST['signout']))
+	{
+		session_start();
+		session_unset();
+		session_destroy();
+		header('Location: /?success=Успешно');
 	}
 	else
-	{
-		echo $error;
-		exit();
-	}
-	header('Location:/');
-?>
+		header('Location: /?error=Danger!');

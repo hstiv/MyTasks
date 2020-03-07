@@ -5,12 +5,8 @@ body {
 	line-height: 21.12px!important;
 }
 
-.container {
-	width: 25%!important;
-}
-
 .header {
-	width: 100%;
+	width: 100%!important;
 	background-color: #69777a;
 	height: 70px;
 }
@@ -25,7 +21,6 @@ body {
 
 #login_task {
 	float: left;
-
 }
 
 .task_form {
@@ -100,7 +95,7 @@ body {
 }
 
 .ul_pagination {
-	padding: 0 10px!important;
+	padding: 10px!important;
 	border: 2px solid rgb(77, 88, 88)!important;
 	border-radius: 5px;
 	min-width: 250px;
@@ -112,6 +107,7 @@ body {
 	margin-bottom: 10px;
 	background: #fcfcfc;
 	border: 1px solid silver;
+	font-family:"Futura PT", "Futura", Helvetica, "Sans serif"!important;
 	border-radius: 5px;
 }
 
@@ -126,9 +122,10 @@ body {
 	font-size: 13px;
 	background: #db5757;
 	position: relative;
-	left: 130px;
+	left: 70px;
 	border-radius: 5px;
 	margin-bottom: 5px;
+	margin-left: 5px;
 }
 
 .button_pagination:hover {
@@ -144,4 +141,43 @@ body {
 
 .desk_email {
 	margin-left: auto;
+}
+
+.red_input {
+	background-color: red;
+}
+
+.green_input {
+	background-color: green;
+}
+
+.sort_btn {
+	font-size: 0.7rem!important;
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	max-width: 80px;
+	max-height: 30px;
+}s
+
+.select_container {
+	border: 1px solid grey;
+	border-radius: 5px;
+	font-style: inherit;
+}
+
+.order_form {
+	display:flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	align-content: center!important;
+	max-width:600px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
 }
